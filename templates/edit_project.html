@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="glass-effect rounded-xl p-8">
+        <h1 class="text-2xl font-bold mb-6">Edit Project</h1>
+
+        <form action="{{ url_for('edit_project', id=project.id) }}" method="POST" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label for="title" class="block font-medium mb-1">Project Title</label>
+                <input type="text" id="title" name="title" value="{{ project.title }}" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="short_description" class="block font-medium mb-1">Short Description</label>
+                <textarea id="short_description" name="short_description" class="w-full border rounded-md p-2" rows="2" required>{{ project.short_description }}</textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="description" class="block font-medium mb-1">Description</label>
+                <textarea id="description" name="description" class="w-full border rounded-md p-2" rows="5" required>{{ project.description }}</textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="tech_stack" class="block font-medium mb-1">Tech Stack</label>
+                <input type="text" id="tech_stack" name="tech_stack" value="{{ project.tech_stack }}" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="project_url" class="block font-medium mb-1">Project URL</label>
+                <input type="text" id="project_url" name="project_url" value="{{ project.project_url }}" class="w-full border rounded-md p-2" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="files" class="block font-medium mb-1">Project Files</label>
+                <input type="file" id="files" name="files[]" multiple class="w-full border rounded-md p-2">
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
